@@ -1,11 +1,2 @@
-## The virtual env for the Backend RAG
-
-pip install virtualenv
-
-virtualenv myenv
-
-.\myenv\Scripts\activate
-
-## Running the server
-
-uvicorn main:app --reload
+# RAG
+Rag (Retreival Augmented Generation) Python solution with llama3, LangChain, Ollama and ChromaDB in a Flask API based solution
