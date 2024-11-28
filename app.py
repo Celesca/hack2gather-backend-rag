@@ -3,7 +3,7 @@ from langchain_ollama import OllamaLLM
 from langchain_chroma import Chroma
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
-from langchain_community.document_loaders import PDFPlumberLoader
+from langchain_community.document_loaders import PyMuPDFLoader
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
 from langchain.prompts import PromptTemplate
@@ -92,15 +92,15 @@ def pdfPost():
     file.save(save_file)
     print(f"filename: {file_name}")
 
-    loader = PDFPlumberLoader(save_file)
+    loader = PyMuPDFLoader(save_file)
     docs = loader.load_and_split()
     print(f"docs len={len(docs)}")
 
-    # Preprocess documents
-    preprocessor = TextPreprocessor()
-    preprocessed_docs = [preprocessor.process_document(doc) for doc in docs]
+    # # Preprocess documents
+    # preprocessor = TextPreprocessor()
+    # preprocessed_docs = [preprocessor.process_document(doc) for doc in docs]
 
-    chunks = text_splitter.split_documents(preprocessed_docs)
+    chunks = text_splitter.split_documents(docs)
     print(f"chunks len={len(chunks)}")
 
     print(chunks)

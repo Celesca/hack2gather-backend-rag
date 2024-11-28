@@ -32,6 +32,7 @@ class TextPreprocessor:
     def preprocess_text(text):
         # text = TextPreprocessor.remove_newline_char(text)
         text = TextPreprocessor.clean_text_refined(text)
+        text = clean(text)
 
         return text
     
